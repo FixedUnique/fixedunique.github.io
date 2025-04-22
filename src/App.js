@@ -64,7 +64,6 @@ export default function App() {
   const [knight, setKnight] = useState(null);
   const [playerCount, setPlayerCount] = useState(2);
   const [rolling, setRolling] = useState(false);
-  const [loser, setLoser] = useState(null);
   const [diceCompleted, setDiceCompleted] = useState(0);
   const [maxRolls, setMaxRolls] = useState(3);
   
@@ -139,7 +138,7 @@ export default function App() {
 
       setRolling(false);
     }
-  }, [diceCompleted]);
+  }, [diceCompleted],  [currentPlayer]);
 
   const endTurn = () => {
     setPlayers(prevPlayers => {
