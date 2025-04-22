@@ -2,7 +2,7 @@
   "name": "dice-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fixedunique.github.io/dice-game/",
+  "homepage": "https://fixedunique.github.io/",
   "dependencies": {
     "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^10.0.6",
