@@ -66,6 +66,7 @@ export default function App() {
   const [rolling, setRolling] = useState(false);
   const [diceCompleted, setDiceCompleted] = useState(0);
   const [maxRolls, setMaxRolls] = useState(3);
+  const [loser, setLoser] = useState(null);
   
   const dice1Ref = useRef();
   const dice2Ref = useRef();
