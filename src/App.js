@@ -228,8 +228,8 @@ export default function App() {
             Number of Players:
             <input 
               type="number" 
-              min="2" 
-              max="8" 
+              min="1" 
+              max="30" 
               value={playerCount}
               onChange={handlePlayerCountChange}
             />
