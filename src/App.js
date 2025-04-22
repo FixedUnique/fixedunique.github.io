@@ -222,7 +222,7 @@ export default function App() {
   if (gamePhase === 'setup') {
     return (
       <div className="setup-screen">
-        <h1>🎲 Drinking Dice Game 🍻</h1>
+        <h1>🎲 Mexen 🍻</h1>
         <div className="setup-form">
           <label>
             Number of Players:
