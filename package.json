@@ -28,8 +28,8 @@
   },
   "eslintConfig": {
     "rules": {
-    "no-unused-vars": "warn" 
-    }
+      "no-unused-vars": "warn"
+    },
     "extends": [
       "react-app",
       "react-app/jest"
