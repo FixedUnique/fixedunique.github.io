@@ -2,6 +2,7 @@
   "name": "dice-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://fixedunique.github.io/dice-game/",
   "dependencies": {
     "@react-three/cannon": "^6.6.0",
     "@react-three/drei": "^10.0.6",
@@ -21,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build && touch build/.nojekyll",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
