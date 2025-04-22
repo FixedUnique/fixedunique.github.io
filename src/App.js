@@ -21,10 +21,7 @@ function Table() {
 
   return (
     <group>
-      {/* Physics collision plane */}
       <mesh ref={ref} />
-      
-      {/* Visual table surface */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
         <planeGeometry args={[40, 40]} />
         <meshStandardMaterial 
@@ -34,19 +31,29 @@ function Table() {
           color="#5d4037"
         />
       </mesh>
-
-      {/* Table edges */}
       <mesh position={[0, -0.5, 20]}>
         <boxGeometry args={[42, 1, 2]} />
-        <meshStandardMaterial map={woodTexture} roughness={0.7} />
+        <meshStandardMaterial 
+          map={woodTexture} 
+          roughness={0.7} 
+        />
       </mesh>
       <mesh position={[0, -0.5, -20]}>
         <boxGeometry args={[42, 1, 2]} />
-        <meshStandardMaterial map={woodTexture} roughness={0.7} />
+        <meshStandardMaterial 
+          map={woodTexture} 
+          roughness={0.7} 
+        />
       </mesh>
       <mesh position={[20, -0.5, 0]} rotation={[0, Math.PI/2, 0]}>
         <boxGeometry args={[42, 1, 2]} />
-        <meshStandardMaterial map={woodTexture
+        <meshStandardMaterial 
+          map={woodTexture}
+          roughness={0.7} 
+        />
+      </mesh>
+    </group>
+  );
 }
 
 export default function App() {
@@ -292,7 +299,6 @@ export default function App() {
             <div className="loser-message">
               {currentLosers.length > 0 ? (
                 currentLosers.map((loser, index) => {
-                  // Calculate actual sips based on game rules
                   const baseSips = 3;
                   let sips = baseSips;
                   
