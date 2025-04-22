@@ -46,14 +46,7 @@ function Table() {
       </mesh>
       <mesh position={[20, -0.5, 0]} rotation={[0, Math.PI/2, 0]}>
         <boxGeometry args={[42, 1, 2]} />
-        <meshStandardMaterial map={woodTexture} roughness={0.7} />
-      </mesh>
-      <mesh position={[-20, -0.5, 0]} rotation={[0, Math.PI/2, 0]}>
-        <boxGeometry args={[42, 1, 2]} />
-        <meshStandardMaterial map={woodTexture} roughness={0.7} />
-      </mesh>
-    </group>
-  );
+        <meshStandardMaterial map={woodTexture
 }
 
 export default function App() {
