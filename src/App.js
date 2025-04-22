@@ -139,7 +139,7 @@ export default function App() {
 
       setRolling(false);
     }
-  }, [diceCompleted],  [currentPlayer]);
+  }, [diceCompleted, currentPlayer]);
 
   const endTurn = () => {
     setPlayers(prevPlayers => {
