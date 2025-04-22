@@ -1,4 +1,4 @@
-import { forwardRef, useState, useEffect } from 'react';
+import { forwardRef, useState, useEffect, useCallback } from 'react';
 import { useBox } from '@react-three/cannon';
 import * as THREE from 'three';
 
@@ -44,11 +44,11 @@ const Dice = forwardRef(({ position, onRollComplete }, ref) => {
   
   const [lastValue, setLastValue] = useState(1);
 
-  const rollDice = () => {
+  const rollDice = useCallback(() => {
     api.position.set(position[0], position[1] + 5, position[2]);
     api.velocity.set(0, 0, 0);
     api.angularVelocity.set(0, 0, 0);
-    
+
     setTimeout(() => {
       api.velocity.set(
         (Math.random() - 0.5) * 10,
@@ -65,12 +65,12 @@ const Dice = forwardRef(({ position, onRollComplete }, ref) => {
     setTimeout(() => {
       const quaternion = new THREE.Quaternion();
       localRef.current.getWorldQuaternion(quaternion);
-      
+
       const value = getFaceValue(quaternion);
       setLastValue(value);
       onRollComplete();
     }, 3000);
-  };
+  }, [api, position, onRollComplete, localRef]);
 
   const getFaceValue = (quaternion) => {
     const worldUp = new THREE.Vector3(0, 1, 0);
@@ -97,37 +97,36 @@ const Dice = forwardRef(({ position, onRollComplete }, ref) => {
         lastValue
       };
     }
-  }, [ref, lastValue]);
+  }, [ref, lastValue, rollDice]);
 
-// In Dice.js, modify the return statement's face mapping:
-return (
-  <group ref={localRef}>
-    <mesh castShadow receiveShadow>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color="#ffffff" roughness={0.2} metalness={0.1} />
-      {[
-        FACE_VALUES.right,    // +X axis (6)
-        FACE_VALUES.left,     // -X axis (1)
-        FACE_VALUES.top,      // +Y axis (5)
-        FACE_VALUES.bottom,   // -Y axis (2)
-        FACE_VALUES.front,    // +Z axis (3)
-        FACE_VALUES.back      // -Z axis (4)
-      ].map((num, i) => (
-        <group key={i} rotation={faceRotations[i]}>
-          {Array.from({ length: num }).map((_, j) => {
-            const pos = getDotPosition(num, j);
-            return (
-              <mesh position={[pos.x, pos.y, 1.01]} key={j}>
-                <circleGeometry args={[0.18, 32]} />
-                <meshStandardMaterial color="#000000" />
-              </mesh>
-            );
-          })}
-        </group>
-      ))}
-    </mesh>
-  </group>
-);
+  return (
+    <group ref={localRef}>
+      <mesh castShadow receiveShadow>
+        <boxGeometry args={[2, 2, 2]} />
+        <meshStandardMaterial color="#ffffff" roughness={0.2} metalness={0.1} />
+        {[
+          FACE_VALUES.right,    // +X axis (6)
+          FACE_VALUES.left,     // -X axis (1)
+          FACE_VALUES.top,      // +Y axis (5)
+          FACE_VALUES.bottom,   // -Y axis (2)
+          FACE_VALUES.front,    // +Z axis (3)
+          FACE_VALUES.back      // -Z axis (4)
+        ].map((num, i) => (
+          <group key={i} rotation={faceRotations[i]}>
+            {Array.from({ length: num }).map((_, j) => {
+              const pos = getDotPosition(num, j);
+              return (
+                <mesh position={[pos.x, pos.y, 1.01]} key={j}>
+                  <circleGeometry args={[0.18, 32]} />
+                  <meshStandardMaterial color="#000000" />
+                </mesh>
+              );
+            })}
+          </group>
+        ))}
+      </mesh>
+    </group>
+  );
 });
 
 export default Dice;
