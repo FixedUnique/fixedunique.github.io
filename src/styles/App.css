@@ -1,0 +1,192 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.dice-area {
+  height: 60vh;
+  width: 100%;
+  position: relative;
+}
+
+.dice-area canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.game-hud {
+  height: 40vh;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+}
+
+.setup-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+  color: white;
+  text-align: center;
+}
+
+.setup-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.setup-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 80%;
+  max-width: 400px;
+}
+
+.setup-form label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.setup-form input {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.setup-form button {
+  background: linear-gradient(45deg, #2196f3, #1976d2);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.action-button {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background: linear-gradient(45deg, #2196f3, #1976d2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.action-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.action-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.end-turn-button {
+  background: linear-gradient(45deg, #4CAF50, #2E7D32) !important;
+}
+
+.players-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.player-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s;
+}
+
+.player-card.active {
+  transform: scale(1.05);
+  border: 2px solid #2196F3 !important;
+}
+
+.player-stats {
+  font-size: 0.9rem;
+}
+
+.special-effect {
+  color: #ff4757;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.instant-loss {
+  color: #ff0000 !important;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.knight-badge {
+  color: #ffa502;
+  margin-top: 5px;
+}
+
+.drink-warning {
+  color: white !important;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: rgba(255, 50, 50, 0.8);
+  border-radius: 10px;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.scoring-phase {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .dice-area {
+      height: 50vh;
+  }
+  
+  .game-hud {
+      height: 50vh;
+  }
+  
+  .players-list {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
